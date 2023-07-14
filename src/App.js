@@ -30,14 +30,14 @@ function App() {
       setmode('dark');   //setmode is a function it cannot be assigned 
       document.body.style.backgroundColor = '#333333';
       showAlert("Dark mode enabled", "success");
-      document.title = 'TextUtils - Dark Mode';     // Dark Mode text appear in title after dark mode enabled  
+      //document.title = 'TextUtils - Dark Mode';     // Dark Mode text appear in title after dark mode enabled  
 
     }
     else {
       setmode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode enabled", "success");
-      document.title = 'TextUtils - White Mode';    // White Mode text appear in title after white mode enabled  
+      //document.title = 'TextUtils - White Mode';    // White Mode text appear in title after white mode enabled  
     }
   }
   return (
@@ -49,9 +49,10 @@ function App() {
       <div className="container my-3" >
         
           <Switch>
-            <Route exact path="/" component={TextForm } />
-            <Route path="/about" component={About} />
+            <Route exact path="/" render={() => <TextForm showAlert={showAlert} mode={mode} heading="Try textutils Word Counter , Character Counter" />} />
+            <Route path="/about" render={() =><About mode={mode}/>} />
           </Switch>
+          {/* <TextForm showAlert={showAlert} mode={mode} heading="Enter text"></TextForm> */}
         
       </div>
 
